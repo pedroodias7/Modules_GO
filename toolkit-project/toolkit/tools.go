@@ -1,6 +1,9 @@
 package toolkit
 
-import "crypto/rand"
+import (
+	"crypto/rand"
+	"net/http"
+)
 
 
 const randomStringSource = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU_+"
@@ -23,4 +26,25 @@ func (t *Tools) RandomString(n int) string {
 	}
 
 	return string(s)
+}
+
+
+
+//uploadfile is a struct informactio to save information abou an upload file
+type UploadedFile struct {
+	newFileName string
+	originalFileName string
+	fileSize int64
+
+}
+
+func (t *Tools) UploadedFiles(r *http.Request, uploadDir string, rename ...bool) ([]*UploadedFile, error){
+
+		rename := true
+		if len(rename) > 0 {
+			renameFile = rename[0]
+
+		}
+
+
 }
